@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AA BCN App</title>
+
+  <!-- PWA Setup -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.png" type="image/png">
+  <meta name="theme-color" content="#ffffff">
+
   <style>
     body {
       font-family: sans-serif;
@@ -39,7 +45,16 @@
   <a class="btn" href="https://www.aabcn01.org/directorio-grupos" target="_blank">📖 Directorio de Grupos</a>
   <a class="btn" href="https://www.aabcn01.org/mapa" target="_blank">🗺️ Mapa</a>
   <a class="btn" href="https://www.aabcn01.org/reflexion" target="_blank">📘 Reflexión del Día</a>
-  <a class="btn" href="https://www.aabcn01.org/buzon" target="_blank">📬 Buzon</a>
-   <a class="btn" href="https://www.aabcn01.org/distritos" target="_blank">📖 Distrito</a>
+  <a class="btn" href="https://www.aabcn01.org/buzon" target="_blank">📬 Buzón</a>
+  <a class="btn" href="https://www.aabcn01.org/distritos" target="_blank">📖 Distrito</a>
+
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(reg => console.log('Service Worker registrado ✅'))
+        .catch(err => console.error('Error registrando SW:', err));
+    }
+  </script>
 </body>
 </html>
