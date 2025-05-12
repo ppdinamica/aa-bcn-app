@@ -1,18 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AA BCN 01</title>
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#ffffff">
-</head>
-<body style="margin:0; padding:0;">
-  <iframe src="https://www.aabcn01.org/publicaciones" style="border:none; width:100vw; height:100vh;"></iframe>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AA BCN App</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 40px;
+      background-color: #f0f0f0;
     }
-  </script>
+    h1 {
+      margin-bottom: 20px;
+      color: #003366;
+    }
+    .btn {
+      display: block;
+      margin: 15px auto;
+      padding: 15px 25px;
+      font-size: 16px;
+      background-color: #0057A0;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      width: 80%;
+      max-width: 300px;
+    }
+    .btn:hover {
+      background-color: #003f75;
+    }
+  </style>
+</head>
+<body>
+  <h1>Portal AA BCN</h1>
+  <a class="btn" href="https://www.aabcn01.org/publicaciones" target="_blank">📢 Publicaciones</a>
+  <a class="btn" href="https://www.aabcn01.org/directorio-grupos" target="_blank">📖 Directorio de Grupos</a>
+  <a class="btn" href="https://www.aabcn01.org/mapa" target="_blank">🗺️ Mapa</a>
+  <a class="btn" href="https://www.aabcn01.org/reflexion" target="_blank">📘 Reflexión del Día</a>
 </body>
 </html>
