@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AA BCN App</title>
 
-  <!-- PWA Setup -->
+  <!-- PWA Meta -->
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icon.png" type="image/png">
   <meta name="theme-color" content="#ffffff">
@@ -52,8 +52,11 @@
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js')
-        .then(reg => console.log('Service Worker registrado ✅'))
-        .catch(err => console.error('Error registrando SW:', err));
+        .then(function(reg) {
+          console.log('✅ Service Worker registrado', reg);
+        }).catch(function(err) {
+          console.log('❌ No se pudo registrar el Service Worker', err);
+        });
     }
   </script>
 </body>
