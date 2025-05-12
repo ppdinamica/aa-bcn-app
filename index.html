@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AA BCN App</title>
 
-  <!-- PWA Meta -->
+  <!-- PWA + Iconos -->
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="icon.png">
   <meta name="theme-color" content="#ffffff">
 
   <style>
@@ -33,6 +34,7 @@
       text-decoration: none;
       width: 80%;
       max-width: 300px;
+      cursor: pointer;
     }
     .btn:hover {
       background-color: #003f75;
@@ -41,6 +43,8 @@
 </head>
 <body>
   <h1>Portal AA BCN</h1>
+
+  <!-- Botones de navegación -->
   <a class="btn" href="https://www.aabcn01.org/publicaciones" target="_blank">📢 Publicaciones</a>
   <a class="btn" href="https://www.aabcn01.org/directorio-grupos" target="_blank">📖 Directorio de Grupos</a>
   <a class="btn" href="https://www.aabcn01.org/mapa" target="_blank">🗺️ Mapa</a>
@@ -48,7 +52,10 @@
   <a class="btn" href="https://www.aabcn01.org/buzon" target="_blank">📬 Buzón</a>
   <a class="btn" href="https://www.aabcn01.org/distritos" target="_blank">📖 Distrito</a>
 
-  <!-- Service Worker Registration -->
+  <!-- Botón de instalación personalizado (Android) -->
+  <button id="installBtn" class="btn" style="display:none;">📲 Instalar app</button>
+
+  <!-- Service Worker + Instalación -->
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js')
@@ -58,6 +65,29 @@
           console.log('❌ No se pudo registrar el Service Worker', err);
         });
     }
+
+    // Instalación PWA para Android
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = 'block';
+
+      installBtn.addEventListener('click', () => {
+        installBtn.style.display = 'none';
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('✅ Usuario aceptó instalar la app');
+          } else {
+            console.log('❌ Usuario canceló la instalación');
+          }
+          deferredPrompt = null;
+        });
+      });
+    });
   </script>
 </body>
 </html>
